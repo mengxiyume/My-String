@@ -204,6 +204,59 @@ int My_Strncmp(const char* string1,const char* string2,size_t count)	//Ö¸¶¨³¤¶È×
 }
 
 
+char* My_Strtok(const char* string, const char* separate)
+{
+	//string	-----	Ä¿±ê×Ö·û´®
+	//separate	-----	Ìõ¼şÔ´×Ö·û´®
+
+	//ÔÚstringÖĞÑ°ÕÒÊÇ·ñÓµÓĞ*separate£¬Èç¹ûÓµÓĞÔò½«µÚÒ»¸ö´æÔÚµÄ×Ö·û¸ü¸ÄÎªNULLÇÒ·µ»ØstringÔ´µØÖ·,¾²Ì¬ÆğÊ¼µØÖ·¸üĞÂ
+
+	char* start = string;				//·µ»ØÖµ
+
+	static char* Home_Tmp = NULL;		//³¤ÆÚÆğÊ¼µØÖ·
+	static char The_End = NULL;
+
+	char* home = string;				//µ±Ç°ÆğÊ¼µØÖ·
+	char* tmp_sep = NULL;
+	char* _string = NULL;
+
+	if (!string)
+	{
+		if (The_End)
+		{
+			return NULL;
+		}
+		home = Home_Tmp + 1;
+		start = home;					//Èç¹û´¥·¢NULLÌõ¼ş£¬ÆğÊ¼ÖµÎª¾²Ì¬ÆğÊ¼Öµ + 1£¬·µ»ØÖµÒ²¸üĞÂÎª¾²Ì¬ÆğÊ¼Öµ + 1
+	}
+
+	The_End = NULL;
+
+	while (*home++)
+	{
+		tmp_sep = separate;
+		while (*tmp_sep++)
+		{
+			if (*home == *tmp_sep)
+			{
+				if (!*tmp_sep)
+				{
+					The_End = 1;
+				}
+
+				*home = '\0';
+				Home_Tmp = home;			//ÈçÓĞ¼ì²âµ½ÌØµã×Ö·û¼¯ÖĞ×Ö·û½øĞĞÔËËã²¢·µ»¹¸Ã´ÎÔËËãÆğÊ¼µØÖ·
+				return start;
+			}
+		}
+
+	}
+
+
+	return NULL;		//Ã»ÓĞ½øĞĞÔËËã·µ»ØNULL
+}
+
+
 //ÀË·ÑĞÔÄÜ£¬Ó¦¸¶ÃæÊÔ
 //size_t My_Strlen(const char* str)
 //{

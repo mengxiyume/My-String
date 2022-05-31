@@ -13,3 +13,5 @@ char* My_Strncpy(char* destination, const char* source, size_t count);				//字符
 char* My_Strncat(char* destination, const char* source, size_t count);				//字符串追加
 int My_Strncmp(const char* string1, const char* string2, size_t count);				//字符串比较
 //达到指定字符运算数量后停止				 										//受限制的字符串函数
+
+char* My_Strtok(const char* string, const char* separate);							//字符串裁切
