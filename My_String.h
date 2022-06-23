@@ -1,19 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+#include"C_to_c.h"
 
-size_t My_Strlen(const char* str);													//å­—ç¬¦ä¸²æ±‚é•¿åº¦
+size_t My_Strlen(const char* str);													//×Ö·û´®Çó³¤¶È
 
-char* My_Strcpy(char* destination, const char* source);								//å­—ç¬¦ä¸²æ‹·è´
-char* My_Strcat(char* destination, const char* source);								//å­—ç¬¦ä¸²è¿½åŠ 
-int My_Strcmp(const char* string1, const char* string2);							//å­—ç¬¦ä¸²æ¯”è¾ƒ
-char* My_Strstr(const char* string, const char* charset);							//å­—ç¬¦ä¸²æŸ¥æ‰¾
-//åªæœ‰é‡åˆ°'\0'æ‰ä¼šåœæ­¢																//é•¿åº¦ä¸å—é™åˆ¶çš„å­—ç¬¦ä¸²å‡½æ•°
+char* My_Strcpy(char* destination, const char* sourse);								//×Ö·û´®¿½±´
+char* My_Strcat(char* destination, const char* sourse);								//×Ö·û´®×·¼Ó
+int My_Strcmp(const char* string1, const char* string2);							//×Ö·û´®±È½Ï
+char* My_Strstr(const char* string, const char* charset);							//×Ö·û´®²éÕÒ
+//Ö»ÓĞÓöµ½'\0'²Å»áÍ£Ö¹																//³¤¶È²»ÊÜÏŞÖÆµÄ×Ö·û´®º¯Êı
 
-char* My_Strncpy(char* destination, const char* source, size_t count);				//å­—ç¬¦ä¸²æ‹·è´
-char* My_Strncat(char* destination, const char* source, size_t count);				//å­—ç¬¦ä¸²è¿½åŠ 
-int My_Strncmp(const char* string1, const char* string2, size_t count);				//å­—ç¬¦ä¸²æ¯”è¾ƒ
-//è¾¾åˆ°æŒ‡å®šå­—ç¬¦è¿ç®—æ•°é‡ååœæ­¢				 										//å—é™åˆ¶çš„å­—ç¬¦ä¸²å‡½æ•°
+char* My_Strncpy(char* destination, const char* sourse, size_t count);				//×Ö·û´®¿½±´
+char* My_Strncat(char* destination, const char* sourse, size_t count);				//×Ö·û´®×·¼Ó
+int My_Strncmp(const char* string1, const char* string2, size_t count);				//×Ö·û´®±È½Ï
+//´ïµ½Ö¸¶¨×Ö·ûÔËËãÊıÁ¿ºóÍ£Ö¹				 										//ÊÜÏŞÖÆµÄ×Ö·û´®º¯Êı
 
-char* My_Strtok(const char* string, const char* separate);							//å­—ç¬¦ä¸²è£åˆ‡
+char* My_Strtok(const char* string, const char* separate);							//×Ö·û´®²ÃÇĞ
 
-int NumToAssic(char sourse);              //å­—ç¬¦æ•°å­—è½¬æ•°å­—
+int OS_Bit();																		//²Ù×÷ÏµÍ³ÊıÎ»ÅĞ¶¨
+int AB_sort(void* p1, void* p2);													//µØÖ·¸ßµÍÅĞ¶Ï
+
+void* My_Memcpy(void* destination, const void* sourse, size_t number);				//ÄÚ´æ¿½±´º¯Êı
+void* My_Memmove(void* destination, const void* sourse, size_t number);				//ÄÚ´æÒÆ¶¯º¯Êı
