@@ -20,5 +20,9 @@ char* My_Strtok(const char* string, const char* separate);							//字符串裁切
 int OS_Bit();																		//操作系统数位判定
 int AB_sort(void* p1, void* p2);													//地址高低判断
 
+//内存操作函数
 void* My_Memcpy(void* destination, const void* sourse, size_t number);				//内存拷贝函数
 void* My_Memmove(void* destination, const void* sourse, size_t number);				//内存移动函数
+void* _memmove(void* destination, const void* sourse, size_t number);				//另一种内存移动
+int My_Memcmp(const void* buffer1, const void* buffer2, size_t number);				//指定内存比较
+void* My_Memset(void* buffer, int content, size_t number);							//缓冲区设置

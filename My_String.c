@@ -259,6 +259,8 @@ int AB_sort(void* p1, void* p2)
 }
 
 
+
+//CÓïÑÔ¹æ¶¨£¬ÄÜ¹»ÊµÏÖÄÚ´æ¿éÄÚ¿½±´¼´¿É£¬²»¿¼ÂÇÄÚ´æ¿Õ¼äÖØºÏ×´¿ö
 void* My_Memcpy(void* destination, const void* sourse, size_t number)		//ÄÚ´æ¿½±´
 {
 	char* _destination = (char*)destination;
@@ -280,6 +282,46 @@ void* My_Memcpy(void* destination, const void* sourse, size_t number)		//ÄÚ´æ¿½±
 	}
 
 	return destination;
+}
+
+void* _memmove(void* destination, const void* sourse, size_t number)
+{
+	char* _destination = (char*)destination;
+	char* _sourse = (char*)sourse;
+
+	if (destination == sourse)
+	{
+		return destination;
+	}
+
+	if (_destination < _sourse)
+	{
+		//Ç° < ºó
+
+		while (number--)
+		{
+			*_destination++ = *_sourse++;
+		}
+		return destination;
+	}
+
+	else
+	{
+		//ºó < Ç°
+
+		_destination += number;
+		_sourse += number;
+
+		while (number--)
+		{
+			*_destination-- = *_sourse--;
+		}
+		*_destination = *_sourse;
+
+		return destination;
+
+	}
+
 }
 
 //------------------------------------------------------------------------------------------------------------------//
@@ -323,6 +365,52 @@ void* My_Memmove(void* destination, const void* sourse, size_t number)										
 	}																												//
 }																													//
 //------------------------------------------------------------------------------------------------------------------//
+
+int My_Memcmp(const void* buffer1, const void* buffer2, size_t number)
+{
+	//Öğ×Ö½Ú±È½ÏÄÚ´æ¿éÊı¾İ´óĞ¡£¬ÈçÓĞÄÚ´æ¿éÓĞ²î¾à£¬·µ»¹
+
+	const char* _buffer1 = (char*)buffer1;
+	const char* _buffer2 = (char*)buffer2;
+
+	int state = 0;
+
+	while (number--)
+	{
+		state = *_buffer1 - *_buffer2;
+
+		//exp		//state==0,¼ÌĞø£¬state!=0,ÅĞ¶ÏÕı¸º·µ»Ø-1£¬1
+		if (state)
+		{
+			if (state > 0)		//
+			{
+				return 1;
+			}
+			else
+			{
+				return -1;
+			}
+		}
+
+		_buffer1++, _buffer2++;
+	}
+
+	return 0;
+}
+
+void* My_Memset(void* buffer, int content, size_t number)
+{
+	//½«bufferÆğÊ¼number¸ö×Ö½ÚÄÚ´æ¿Õ¼äÌî³äÎªcontent£¬·µ»ØµÚÒ»¸öÌî³äµÄµØÖ· 
+
+	char* _buffer = (char*)buffer;
+
+	while (number--)
+	{
+		*_buffer++ = content;			//Ìî³ä
+	}
+
+	return buffer;
+}
 
 //ÀË·ÑĞÔÄÜ£¬Ó¦¸¶ÃæÊÔ
 //size_t My_Strlen(const char* str)
